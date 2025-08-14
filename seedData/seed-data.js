@@ -1,7 +1,8 @@
 const { MongoClient } = require("mongodb");
 
 const MONGO_URL =
-  process.env.MONGO_URL || "mongodb://localhost:27017/portfolio";
+  process.env.MONGO_URL ||
+  "mongodb+srv://farmancs2024:uPbXyl42FKkF5KW1@portfolio.yk5tjh9.mongodb.net/portfolio";
 
 async function seedData() {
   const client = new MongoClient(MONGO_URL);

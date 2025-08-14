@@ -51,7 +51,7 @@ export interface About {
 }
 
 // Fallback data for when MongoDB is not available
-const fallbackSkills: Skill[] = [
+export const fallbackSkills: Skill[] = [
   // MERN Stack Core
   {
     _id: "1",
@@ -198,7 +198,7 @@ const fallbackSkills: Skill[] = [
   },
 ];
 
-const fallbackAbout: About = {
+export const fallbackAbout: About = {
   _id: "1",
   name: "Farman Ullah",
   title: "MERN Stack Developer",
@@ -214,7 +214,7 @@ const fallbackAbout: About = {
   },
 };
 
-const fallbackProjects: Project[] = [
+export const fallbackProjects: Project[] = [
   {
     _id: "1",
     title:
@@ -266,7 +266,7 @@ const fallbackProjects: Project[] = [
   },
 ];
 
-const fallbackExperience: Experience[] = [
+export const fallbackExperience: Experience[] = [
   {
     _id: "1",
     company: "Curious Packet",

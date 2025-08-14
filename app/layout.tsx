@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import PerformanceMonitor from "@/components/PerformanceMonitor";
 
 export const metadata: Metadata = {
   title: "FU | Farman Ullah - MERN Stack Developer",
   description:
     "MERN Stack Developer specializing in MongoDB, Express.js, React.js, and Node.js. Based in Lahore, Pakistan with expertise in building scalable web applications.",
+  metadataBase: new URL("https://farmanullah.dev"),
   keywords: [
     "MERN Stack Developer",
     "MongoDB",
@@ -77,6 +79,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/favicon.svg" />
       </head>
       <body className="font-sans antialiased bg-white dark:bg-dark-900 text-gray-900 dark:text-white transition-colors duration-200 overflow-x-hidden">
+        <PerformanceMonitor />
         {children}
       </body>
     </html>

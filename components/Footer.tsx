@@ -92,10 +92,10 @@ const Footer = () => {
                   <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                 </svg>
                 <a
-                  href="mailto:contact@farmanullah.dev"
+                  href="farmancs2024@gmail.com"
                   className="text-sm sm:text-base text-gray-300 hover:text-blue-400 transition-colors duration-200 touch-friendly"
                 >
-                  contact@farmanullah.dev
+                  farmancs2024@gmail.com
                 </a>
               </div>
               <div className="flex items-center space-x-2 sm:space-x-3">
