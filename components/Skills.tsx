@@ -80,7 +80,7 @@ const Skills = ({ skills }: SkillsProps) => {
       case "backend":
         return "⚙️";
       case "database":
-        return <Database className="w-8 h-8" />;
+        return <Database className="w-6 h-6 sm:w-8 sm:h-8" />;
       case "devops":
         return "🚀";
       default:
@@ -300,29 +300,32 @@ const Skills = ({ skills }: SkillsProps) => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {/* Section Header */}
-          <motion.div variants={categoryVariants} className="text-center mb-16">
+          {/* Section Header - Enhanced responsive design */}
+          <motion.div
+            variants={categoryVariants}
+            className="text-center mb-12 sm:mb-16"
+          >
             <motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-block mb-6"
+              className="inline-block mb-4 sm:mb-6"
             >
-              <div className="w-20 h-20 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 flex items-center justify-center text-white text-3xl shadow-lg">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl shadow-lg">
                 🚀
               </div>
             </motion.div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
               My <span className="gradient-text">Skills</span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed px-4">
               Comprehensive expertise across the full development stack, from
               frontend interfaces to backend systems and deployment
             </p>
           </motion.div>
 
-          {/* Skills by Category */}
-          <div className="space-y-12">
+          {/* Skills by Category - Enhanced responsive grid */}
+          <div className="space-y-8 sm:space-y-12">
             {categories.map((category) => {
               const categorySkills = allSkills.filter(
                 (skill) => skill.category === category
@@ -334,35 +337,35 @@ const Skills = ({ skills }: SkillsProps) => {
                 <motion.div
                   key={category}
                   variants={categoryVariants}
-                  className="space-y-6"
+                  className="space-y-4 sm:space-y-6"
                 >
-                  {/* Category Header */}
+                  {/* Category Header - Enhanced responsive design */}
                   <motion.div
                     className="text-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <div className="flex items-center justify-center space-x-4 mb-4">
+                    <div className="flex items-center justify-center space-x-3 sm:space-x-4 mb-3 sm:mb-4">
                       <div
-                        className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${getCategoryColor(
+                        className={`w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-r ${getCategoryColor(
                           category
-                        )} flex items-center justify-center text-white text-2xl shadow-lg`}
+                        )} flex items-center justify-center text-white text-xl sm:text-2xl md:text-3xl shadow-lg`}
                       >
                         {getCategoryIcon(category)}
                       </div>
-                      <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
                         {getCategoryTitle(category)}
                       </h3>
                     </div>
-                    <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
                       {getCategoryDescription(category)}
                     </p>
                   </motion.div>
 
-                  {/* Skills Grid */}
+                  {/* Skills Grid - Enhanced responsive design */}
                   <motion.div
-                    className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
                     variants={containerVariants}
                   >
                     {categorySkills.map((skill, index) => (
@@ -370,7 +373,7 @@ const Skills = ({ skills }: SkillsProps) => {
                         key={skill._id}
                         variants={skillCardVariants}
                         whileHover="hover"
-                        className={`group relative bg-white dark:bg-dark-800 rounded-xl p-3 shadow-lg border border-gray-200 dark:border-dark-700 hover:shadow-2xl transition-all duration-300 overflow-hidden ${
+                        className={`group relative bg-white dark:bg-dark-800 rounded-xl p-3 sm:p-4 md:p-6 shadow-lg border border-gray-200 dark:border-dark-700 hover:shadow-2xl transition-all duration-300 overflow-hidden touch-friendly ${
                           skill.name === "Typing Skills"
                             ? "ring-2 ring-teal-200 dark:ring-teal-800 hover:ring-teal-300 dark:hover:ring-teal-700"
                             : ""
@@ -388,9 +391,9 @@ const Skills = ({ skills }: SkillsProps) => {
                         />
 
                         <div className="relative z-10">
-                          {/* Skill Header */}
-                          <div className="flex items-center justify-between mb-3">
-                            <h4 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
+                          {/* Skill Header - Enhanced responsive design */}
+                          <div className="flex items-center justify-between mb-3 sm:mb-4">
+                            <h4 className="text-sm sm:text-base md:text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
                               {skill.name}
                             </h4>
                             {(() => {
@@ -398,7 +401,7 @@ const Skills = ({ skills }: SkillsProps) => {
                               if (Icon) {
                                 return (
                                   <motion.span
-                                    className="text-xl"
+                                    className="text-lg sm:text-xl md:text-2xl"
                                     animate={{ scale: [1, 1.05, 1] }}
                                     transition={{
                                       duration: 2,
@@ -407,7 +410,7 @@ const Skills = ({ skills }: SkillsProps) => {
                                     }}
                                   >
                                     <Icon
-                                      className={`w-5 h-5 ${getIconColorClass(
+                                      className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 ${getIconColorClass(
                                         skill.name
                                       )}`}
                                     />
@@ -417,7 +420,7 @@ const Skills = ({ skills }: SkillsProps) => {
                               if (skill.icon) {
                                 return (
                                   <motion.span
-                                    className={`text-xl ${
+                                    className={`text-lg sm:text-xl md:text-2xl ${
                                       skill.name === "Typing Skills"
                                         ? "text-teal-500"
                                         : ""
@@ -440,19 +443,19 @@ const Skills = ({ skills }: SkillsProps) => {
                             })()}
                           </div>
 
-                          {/* Proficiency Bar */}
-                          <div className="space-y-2">
-                            <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400">
+                          {/* Proficiency Bar - Enhanced responsive design */}
+                          <div className="space-y-2 sm:space-y-3">
+                            <div className="flex justify-between text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                               <span>Proficiency</span>
                               <span className="font-semibold">
                                 {skill.proficiency}%
                               </span>
                             </div>
-                            <div className="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2 overflow-hidden">
+                            <div className="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2 sm:h-3 overflow-hidden">
                               <motion.div
                                 custom={skill.proficiency}
                                 variants={progressBarVariants}
-                                className={`h-2 rounded-full bg-gradient-to-r ${getSkillColor(
+                                className={`h-full rounded-full bg-gradient-to-r ${getSkillColor(
                                   skill.name,
                                   category
                                 )} shadow-sm`}
@@ -460,16 +463,16 @@ const Skills = ({ skills }: SkillsProps) => {
                             </div>
                           </div>
 
-                          {/* Skill Level Indicator */}
-                          <div className="mt-4 flex justify-center">
-                            <div className="flex space-x-1">
+                          {/* Skill Level Indicator - Enhanced responsive design */}
+                          <div className="mt-3 sm:mt-4 flex justify-center">
+                            <div className="flex space-x-1 sm:space-x-2">
                               {[1, 2, 3, 4, 5].map((level) => (
                                 <motion.div
                                   key={level}
                                   initial={{ scale: 0 }}
                                   animate={{ scale: 1 }}
                                   transition={{ delay: 0.1 * level }}
-                                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                  className={`w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 ${
                                     level <= Math.ceil(skill.proficiency / 20)
                                       ? `bg-gradient-to-r ${getSkillColor(
                                           skill.name,
@@ -482,10 +485,10 @@ const Skills = ({ skills }: SkillsProps) => {
                             </div>
                           </div>
 
-                          {/* Skill Description */}
-                          <div className="mt-3 pt-2 border-t border-gray-200 dark:border-dark-700">
+                          {/* Skill Description - Enhanced responsive design */}
+                          <div className="mt-3 sm:mt-4 pt-2 sm:pt-3 border-t border-gray-200 dark:border-dark-700">
                             <p
-                              className={`text-xs ${
+                              className={`text-xs sm:text-sm md:text-base ${
                                 skill.name === "Typing Skills"
                                   ? "text-teal-600 dark:text-teal-400 font-semibold"
                                   : "text-gray-600 dark:text-gray-400"

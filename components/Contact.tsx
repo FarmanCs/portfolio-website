@@ -105,7 +105,7 @@ const Contact = ({ about }: ContactProps) => {
   return (
     <section
       id="contact"
-      className="section-padding bg-gray-50 dark:bg-dark-800 contact-section py-8 sm:py-12 md:py-16 lg:py-20"
+      className="section-padding bg-gray-50 dark:bg-dark-800 contact-section"
     >
       <div className="container-custom">
         <motion.div
@@ -114,25 +114,25 @@ const Contact = ({ about }: ContactProps) => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          {/* Section Header */}
+          {/* Section Header - Enhanced responsive design */}
           <motion.div
             variants={itemVariants}
             className="text-center mb-8 sm:mb-12 md:mb-16"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
               Get In <span className="gradient-text">Touch</span>
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-2 sm:px-4">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
               Ready to start a project or just want to chat? Feel free to reach
               out!
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 max-w-6xl mx-auto">
-            {/* Contact Form - Show first on smaller screens */}
-            <motion.div variants={itemVariants} className="order-1 lg:order-2">
+            {/* Contact Form - Enhanced responsive design */}
+            <motion.div variants={itemVariants} className="order-2 lg:order-1">
               <div className="bg-white dark:bg-dark-900 rounded-xl p-4 sm:p-6 md:p-8 shadow-lg border border-gray-200 dark:border-dark-700">
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
+                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
                   Send Message
                 </h3>
 
@@ -140,13 +140,13 @@ const Contact = ({ about }: ContactProps) => {
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-4 sm:py-6 md:py-8"
+                    className="text-center py-6 sm:py-8 md:py-12"
                   >
-                    <CheckCircle className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 text-green-500 mx-auto mb-3 sm:mb-4" />
-                    <h4 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                    <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-green-500 mx-auto mb-4 sm:mb-6" />
+                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-2 sm:mb-3">
                       Message Sent!
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+                    <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400">
                       Thank you for reaching out. I'll get back to you soon!
                     </p>
                   </motion.div>
@@ -154,11 +154,11 @@ const Contact = ({ about }: ContactProps) => {
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-4 sm:py-6 md:py-8"
+                    className="text-center py-6 sm:py-8 md:py-12"
                   >
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
                       <svg
-                        className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 text-red-500"
+                        className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-red-500"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -171,15 +171,15 @@ const Contact = ({ about }: ContactProps) => {
                         />
                       </svg>
                     </div>
-                    <h4 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-2 sm:mb-3">
                       Error Sending Message
                     </h4>
-                    <p className="text-red-600 dark:text-red-400 mb-3 sm:mb-4 text-sm sm:text-base">
+                    <p className="text-red-600 dark:text-red-400 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg">
                       {error}
                     </p>
                     <button
                       onClick={() => setError(null)}
-                      className="btn-primary"
+                      className="btn-primary touch-friendly focus-visible"
                     >
                       Try Again
                     </button>
@@ -187,13 +187,13 @@ const Contact = ({ about }: ContactProps) => {
                 ) : (
                   <form
                     onSubmit={handleSubmit}
-                    className="space-y-3 sm:space-y-4 md:space-y-6"
+                    className="space-y-4 sm:space-y-6 md:space-y-8"
                   >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
                       <div>
                         <label
                           htmlFor="name"
-                          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 sm:mb-2"
+                          className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 mb-2 sm:mb-3"
                         >
                           Name
                         </label>
@@ -204,14 +204,14 @@ const Contact = ({ about }: ContactProps) => {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-sm sm:text-base"
+                          className="w-full px-4 sm:px-6 py-3 sm:py-4 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-sm sm:text-base md:text-lg transition-colors duration-200 touch-friendly focus-visible"
                           placeholder="Your name"
                         />
                       </div>
                       <div>
                         <label
                           htmlFor="email"
-                          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 sm:mb-2"
+                          className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 mb-2 sm:mb-3"
                         >
                           Email
                         </label>
@@ -222,7 +222,7 @@ const Contact = ({ about }: ContactProps) => {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-sm sm:text-base"
+                          className="w-full px-4 sm:px-6 py-3 sm:py-4 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-sm sm:text-base md:text-lg transition-colors duration-200 touch-friendly focus-visible"
                           placeholder="your@email.com"
                         />
                       </div>
@@ -231,7 +231,7 @@ const Contact = ({ about }: ContactProps) => {
                     <div>
                       <label
                         htmlFor="subject"
-                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 sm:mb-2"
+                        className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 mb-2 sm:mb-3"
                       >
                         Subject
                       </label>
@@ -242,7 +242,7 @@ const Contact = ({ about }: ContactProps) => {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-sm sm:text-base"
+                        className="w-full px-4 sm:px-6 py-3 sm:py-4 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-sm sm:text-base md:text-lg transition-colors duration-200 touch-friendly focus-visible"
                         placeholder="What's this about?"
                       />
                     </div>
@@ -250,7 +250,7 @@ const Contact = ({ about }: ContactProps) => {
                     <div>
                       <label
                         htmlFor="message"
-                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 sm:mb-2"
+                        className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 mb-2 sm:mb-3"
                       >
                         Message
                       </label>
@@ -261,7 +261,7 @@ const Contact = ({ about }: ContactProps) => {
                         onChange={handleChange}
                         required
                         rows={4}
-                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none text-sm sm:text-base"
+                        className="w-full px-4 sm:px-6 py-3 sm:py-4 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none text-sm sm:text-base md:text-lg transition-colors duration-200 touch-friendly focus-visible"
                         placeholder="Tell me about your project or just say hello!"
                       />
                     </div>
@@ -271,16 +271,16 @@ const Contact = ({ about }: ContactProps) => {
                       disabled={isSubmitting}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full btn-primary flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base py-2.5 sm:py-3"
+                      className="w-full btn-primary flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base md:text-lg py-3 sm:py-4 touch-friendly focus-visible"
                     >
                       {isSubmitting ? (
                         <>
-                          <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                           <span>Sending...</span>
                         </>
                       ) : (
                         <>
-                          <Send className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <Send className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                           <span>Send Message</span>
                         </>
                       )}
@@ -290,37 +290,37 @@ const Contact = ({ about }: ContactProps) => {
               </div>
             </motion.div>
 
-            {/* Contact Information - Show second on smaller screens */}
+            {/* Contact Information - Enhanced responsive design */}
             <motion.div
               variants={itemVariants}
-              className="order-2 lg:order-1 space-y-4 sm:space-y-6 md:space-y-8"
+              className="order-1 lg:order-2 space-y-4 sm:space-y-6 md:space-y-8"
             >
               <div className="bg-white dark:bg-dark-900 rounded-xl p-4 sm:p-6 md:p-8 shadow-lg border border-gray-200 dark:border-dark-700">
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 md:mb-6">
+                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 md:mb-6">
                   Let's Connect
                 </h3>
-                <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 mb-4 sm:mb-6 md:mb-8 leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 mb-4 sm:mb-6 md:mb-8 leading-relaxed">
                   I'm always open to discussing new opportunities, interesting
                   projects, or just having a friendly chat about technology and
                   development.
                 </p>
               </div>
 
-              {/* Contact Details */}
-              <div className="space-y-3 sm:space-y-4 md:space-y-6">
-                <div className="flex items-center space-x-3 sm:space-x-4">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary-600 dark:text-primary-400" />
+              {/* Contact Details - Enhanced responsive design */}
+              <div className="space-y-4 sm:space-y-6 md:space-y-8">
+                <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-6">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-primary-600 dark:text-primary-400" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h4 className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
+                    <h4 className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg">
                       Email
                     </h4>
                     <a
                       href={`mailto:${
                         about?.email || "farmancs2024@gmail.com"
                       }`}
-                      className="text-primary-600 dark:text-primary-400 hover:underline text-sm sm:text-base break-all"
+                      className="text-primary-600 dark:text-primary-400 hover:underline text-sm sm:text-base md:text-lg break-all touch-friendly"
                     >
                       {about?.email || "farmancs2024@gmail.com"}
                     </a>
@@ -328,17 +328,17 @@ const Contact = ({ about }: ContactProps) => {
                 </div>
 
                 {about?.phone && (
-                  <div className="flex items-center space-x-3 sm:space-x-4">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary-600 dark:text-primary-400" />
+                  <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-6">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-primary-600 dark:text-primary-400" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <h4 className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
+                      <h4 className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg">
                         Phone
                       </h4>
                       <a
                         href={`tel:${about.phone}`}
-                        className="text-primary-600 dark:text-primary-400 hover:underline text-sm sm:text-base"
+                        className="text-primary-600 dark:text-primary-400 hover:underline text-sm sm:text-base md:text-lg touch-friendly"
                       >
                         {about.phone}
                       </a>
@@ -346,28 +346,28 @@ const Contact = ({ about }: ContactProps) => {
                   </div>
                 )}
 
-                <div className="flex items-center space-x-3 sm:space-x-4">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary-600 dark:text-primary-400" />
+                <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-6">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-primary-600 dark:text-primary-400" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h4 className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
+                    <h4 className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg">
                       Location
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
-                      {about?.location || "Karachi, Pakistan"}
+                    <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg">
+                      {about?.location || "Lahore, Pakistan"}
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Availability */}
-              <div className="bg-white dark:bg-dark-900 rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-dark-700">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-3 text-sm sm:text-base">
+              {/* Availability - Enhanced responsive design */}
+              <div className="bg-white dark:bg-dark-900 rounded-xl p-4 sm:p-6 md:p-8 border border-gray-200 dark:border-dark-700">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4 text-sm sm:text-base md:text-lg">
                   Availability
                 </h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm sm:text-base">
+                <div className="space-y-2 sm:space-y-3">
+                  <div className="flex justify-between text-sm sm:text-base md:text-lg">
                     <span className="text-gray-600 dark:text-gray-400">
                       Freelance
                     </span>
@@ -375,7 +375,7 @@ const Contact = ({ about }: ContactProps) => {
                       Available
                     </span>
                   </div>
-                  <div className="flex justify-between text-sm sm:text-base">
+                  <div className="flex justify-between text-sm sm:text-base md:text-lg">
                     <span className="text-gray-600 dark:text-gray-400">
                       Full-time
                     </span>
@@ -383,7 +383,7 @@ const Contact = ({ about }: ContactProps) => {
                       Available
                     </span>
                   </div>
-                  <div className="flex justify-between text-sm sm:text-base">
+                  <div className="flex justify-between text-sm sm:text-base md:text-lg">
                     <span className="text-gray-600 dark:text-gray-400">
                       Part-time
                     </span>

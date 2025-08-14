@@ -27,7 +27,7 @@ const Header = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -95,16 +95,16 @@ const Header = () => {
       } border-b border-gray-200 dark:border-dark-700`}
     >
       <div className="container-custom">
-        <div className="flex items-center h-10 sm:h-12 md:h-13 lg:h-13 justify-between">
-          {/* Logo - moved closer to left */}
+        <div className="flex items-center h-12 sm:h-14 md:h-16 lg:h-16 justify-between">
+          {/* Logo - Responsive sizing */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-1 sm:space-x-2 md:space-x-3 lg:space-x-3 mr-1 sm:mr-2 md:mr-8 lg:mr-16"
+            className="flex items-center space-x-2 sm:space-x-3 md:space-x-4 lg:space-x-4 mr-2 sm:mr-4 md:mr-8 lg:mr-16"
           >
-            {/* Profile Picture */}
+            {/* Profile Picture - Responsive sizing */}
             <motion.div
               whileHover={{ scale: 1.1 }}
-              className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full overflow-hidden border-2 border-gray-200 dark:border-dark-600 shadow-md"
+              className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full overflow-hidden border-2 border-gray-200 dark:border-dark-600 shadow-md flex-shrink-0"
             >
               <img
                 src="/profile.png"
@@ -112,62 +112,63 @@ const Header = () => {
                 className="w-full h-full object-cover"
               />
             </motion.div>
-            {/* Hide name on small screens, show on medium and larger with proper text handling */}
+            {/* Name - Responsive text sizing */}
             <span className="hidden sm:inline text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-gray-900 dark:text-white whitespace-nowrap header-name">
               Farman Ullah
             </span>
           </motion.div>
 
-          {/* Desktop Navigation - with more spacing */}
-          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 xl:space-x-12 flex-1 justify-center">
+          {/* Desktop Navigation - Enhanced responsive spacing */}
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 2xl:space-x-12 flex-1 justify-center">
             {navItems.map((item) => (
               <motion.button
                 key={item.name}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection(item.href)}
-                className={`relative text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors duration-200 whitespace-nowrap ${
+                className={`relative text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors duration-200 whitespace-nowrap px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-800 ${
                   activeHash === item.href && item.href !== "#home"
-                    ? "text-primary-600 dark:text-primary-400"
+                    ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20"
                     : ""
                 }`}
               >
                 {item.name}
                 {activeHash === item.href && item.href !== "#home" && (
-                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-0.5 w-8 bg-primary-600 dark:bg-primary-400 rounded-full" />
+                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 w-6 bg-primary-600 dark:bg-primary-400 rounded-full" />
                 )}
               </motion.button>
             ))}
           </nav>
 
-          {/* Right side buttons - moved closer to left */}
-          <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-4 ml-1 md:ml-6 lg:ml-8">
-            {/* Dark mode toggle */}
+          {/* Right side buttons - Enhanced responsive design */}
+          <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4 lg:space-x-6 ml-2 lg:ml-8">
+            {/* Dark mode toggle - Responsive sizing */}
             {mounted && (
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={toggleDarkMode}
-                className="p-1 sm:p-1.5 md:p-1.5 lg:p-2 rounded-lg bg-gray-100 dark:bg-dark-800 hover:bg-gray-200 dark:hover:bg-dark-700 transition-colors duration-200"
+                className="p-2 sm:p-2.5 md:p-3 rounded-lg bg-gray-100 dark:bg-dark-800 hover:bg-gray-200 dark:hover:bg-dark-700 transition-colors duration-200 touch-friendly focus-visible"
+                aria-label="Toggle dark mode"
               >
                 {isDark ? (
-                  <Sun className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-4 md:h-4 lg:w-5 lg:h-5 text-yellow-500" />
+                  <Sun className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 lg:w-6 lg:h-6 text-yellow-500" />
                 ) : (
-                  <Moon className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-4 md:h-4 lg:w-5 lg:h-5 text-gray-600" />
+                  <Moon className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 lg:w-6 lg:h-6 text-gray-600" />
                 )}
               </motion.button>
             )}
 
-            {/* Contact button */}
+            {/* Contact button - Responsive text */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection("#contact")}
-              className="hidden md:flex items-center space-x-2 px-2.5 md:px-3 lg:px-4 py-1 md:py-1.5 lg:py-2 border border-gray-300 dark:border-dark-600 rounded-lg hover:border-primary-600 dark:hover:border-primary-400 transition-colors duration-200"
+              className="hidden md:flex items-center space-x-2 px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 lg:py-3 border border-gray-300 dark:border-dark-600 rounded-lg hover:border-primary-600 dark:hover:border-primary-400 transition-colors duration-200 touch-friendly focus-visible"
             >
-              <span>Contact</span>
+              <span className="text-sm sm:text-base lg:text-base">Contact</span>
               <svg
-                className="w-4 h-4"
+                className="w-3 h-3 sm:w-4 sm:h-4 lg:w-4 lg:h-4"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -181,42 +182,58 @@ const Header = () => {
               </svg>
             </motion.button>
 
-            {/* Mobile menu button */}
+            {/* Mobile menu button - Enhanced touch target */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-1 sm:p-1.5 md:p-1.5 lg:p-2 rounded-lg bg-gray-100 dark:bg-dark-800 hover:bg-gray-200 dark:hover:bg-dark-700 transition-colors duration-200"
+              className="lg:hidden p-2 sm:p-2.5 md:p-3 rounded-lg bg-gray-100 dark:bg-dark-800 hover:bg-gray-200 dark:hover:bg-dark-700 transition-colors duration-200 touch-friendly focus-visible"
+              aria-label="Toggle mobile menu"
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? (
-                <X className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-4 md:h-4 lg:w-5 lg:h-5" />
+                <X className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5" />
               ) : (
-                <Menu className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-4 md:h-4 lg:w-5 lg:h-5" />
+                <Menu className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5" />
               )}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Enhanced Mobile Navigation */}
         {isMobileMenuOpen && (
           <motion.nav
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden py-4 border-t border-gray-200 dark:border-dark-700"
+            className="lg:hidden py-4 sm:py-6 border-t border-gray-200 dark:border-dark-700"
           >
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-3 sm:space-y-4">
               {navItems.map((item) => (
-                <button
+                <motion.button
                   key={item.name}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => scrollToSection(item.href)}
-                  className={`text-left transition-colors duration-200 whitespace-nowrap ${
+                  className={`text-left transition-all duration-200 whitespace-nowrap px-4 py-3 sm:py-4 rounded-lg touch-friendly focus-visible ${
                     activeHash === item.href && item.href !== "#home"
-                      ? "text-primary-600 dark:text-primary-400"
-                      : "text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
+                      ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 font-medium"
+                      : "text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-dark-800"
                   }`}
                 >
-                  {item.name}
-                </button>
+                  <span className="text-base sm:text-lg font-medium">
+                    {item.name}
+                  </span>
+                </motion.button>
               ))}
+
+              {/* Mobile Contact Button */}
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => scrollToSection("#contact")}
+                className="mt-4 px-4 py-3 sm:py-4 bg-primary-600 text-white rounded-lg font-medium text-base sm:text-lg touch-friendly focus-visible hover:bg-primary-700 transition-colors duration-200"
+              >
+                Contact Me
+              </motion.button>
             </div>
           </motion.nav>
         )}

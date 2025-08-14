@@ -66,32 +66,70 @@
     }
   }
 
-  /* UpArrow component improvements */
-  .up-arrow {
+  /* Enhanced UpArrow component with responsive design */
+  .up-arrow-responsive {
     position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
     z-index: 9999;
     background: linear-gradient(135deg, #3b82f6, #1d4ed8);
     border: none;
     border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    /* Responsive sizing */
+    width: 2.5rem;
+    height: 2.5rem;
+    bottom: 1rem;
+    right: 1rem;
   }
 
-  .up-arrow:hover {
+  /* Tablet and larger screens */
+  @media (min-width: 640px) {
+    .up-arrow-responsive {
+      width: 3rem;
+      height: 3rem;
+      bottom: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+
+  /* Desktop and larger screens */
+  @media (min-width: 1024px) {
+    .up-arrow-responsive {
+      width: 3.5rem;
+      height: 3.5rem;
+      bottom: 2rem;
+      right: 2rem;
+    }
+  }
+
+  .up-arrow-responsive:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
   }
 
-  .up-arrow:active {
+  .up-arrow-responsive:active {
     transform: translateY(0);
+  }
+
+  /* Touch device improvements */
+  @media (hover: none) and (pointer: coarse) {
+    .up-arrow-responsive {
+      /* Larger touch target for mobile devices */
+      min-width: 44px;
+      min-height: 44px;
+    }
+
+    .up-arrow-responsive:hover {
+      transform: none;
+    }
+
+    .up-arrow-responsive:active {
+      transform: scale(0.95);
+    }
   }
 
   /* Optimize animations for better performance */
@@ -108,6 +146,82 @@
       -ms-transform: translateZ(0);
       -o-transform: translateZ(0);
       transform: translateZ(0);
+    }
+  }
+
+  /* Mobile-specific improvements */
+  @media (max-width: 640px) {
+    /* Improve touch targets */
+    button,
+    a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    /* Modal improvements for mobile - no scrolling */
+    [role="dialog"] {
+      padding: 0.5rem !important;
+    }
+
+    [role="dialog"] > div {
+      max-height: 90vh !important;
+      max-width: 90vw !important;
+    }
+
+    /* Better text sizing for mobile */
+    h1 {
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+
+    /* Improve spacing for mobile */
+    .section-padding {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+  }
+
+  /* Tablet-specific improvements */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    /* Optimize for tablet landscape and portrait */
+    .container-custom {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    /* Better text sizing for tablet */
+    h1 {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
+  }
+
+  /* Large screen improvements */
+  @media (min-width: 1280px) {
+    /* Optimize for large screens */
+    .container-custom {
+      max-width: 80rem;
+    }
+
+    /* Better text sizing for large screens */
+    h1 {
+      font-size: 3.75rem;
+      line-height: 1;
+    }
+
+    h2 {
+      font-size: 3rem;
+      line-height: 1;
     }
   }
 }
@@ -135,6 +249,19 @@
 
   .btn-secondary {
     @apply border-2 border-gray-300 hover:border-primary-600 text-gray-700 hover:text-primary-600 font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-all duration-200 text-sm sm:text-base;
+  }
+
+  /* Enhanced responsive button classes */
+  .btn-mobile {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+  }
+
+  .btn-tablet {
+    @apply min-h-[48px] min-w-[48px] flex items-center justify-center;
+  }
+
+  .btn-desktop {
+    @apply min-h-[52px] min-w-[52px] flex items-center justify-center;
   }
 
   /* Contact form responsive improvements */
@@ -166,6 +293,110 @@
       @apply px-2;
     }
   }
+
+  /* Responsive grid improvements */
+  .grid-responsive {
+    @apply grid gap-4 sm:gap-6 md:gap-8;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .grid-mobile {
+    @apply grid-cols-1 gap-4;
+  }
+
+  .grid-tablet {
+    @apply sm:grid-cols-2 gap-6;
+  }
+
+  .grid-desktop {
+    @apply lg:grid-cols-3 xl:grid-cols-4 gap-8;
+  }
+
+  /* Responsive text utilities */
+  .text-responsive {
+    @apply text-sm sm:text-base md:text-lg lg:text-xl;
+  }
+
+  .text-mobile {
+    @apply text-sm;
+  }
+
+  .text-tablet {
+    @apply sm:text-base md:text-lg;
+  }
+
+  .text-desktop {
+    @apply lg:text-xl xl:text-2xl;
+  }
+
+  /* Responsive spacing utilities */
+  .spacing-responsive {
+    @apply space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10;
+  }
+
+  .spacing-mobile {
+    @apply space-y-4;
+  }
+
+  .spacing-tablet {
+    @apply sm:space-y-6 md:space-y-8;
+  }
+
+  .spacing-desktop {
+    @apply lg:space-y-10 xl:space-y-12;
+  }
+
+  /* Touch-friendly interactive elements */
+  .touch-friendly {
+    @apply cursor-pointer select-none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .touch-friendly:active {
+    @apply transform scale-95;
+  }
+
+  /* Improved focus states for accessibility */
+  .focus-visible {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-dark-900;
+  }
+
+  /* Smooth scrolling improvements */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Mobile navigation improvements */
+  .mobile-nav {
+    @apply fixed inset-0 z-50 bg-white dark:bg-dark-900 transform transition-transform duration-300 ease-in-out;
+  }
+
+  .mobile-nav-open {
+    @apply translate-x-0;
+  }
+
+  .mobile-nav-closed {
+    @apply translate-x-full;
+  }
+
+  /* Responsive image containers */
+  .image-responsive {
+    @apply relative overflow-hidden rounded-lg;
+    aspect-ratio: 16/9;
+  }
+
+  .image-mobile {
+    @apply aspect-square;
+  }
+
+  .image-tablet {
+    @apply sm:aspect-video;
+  }
+
+  .image-desktop {
+    @apply lg:aspect-[16/9];
+  }
 }
 
 @layer utilities {
@@ -182,5 +413,47 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  /* Responsive animation utilities */
+  .animate-responsive {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .animate-mobile {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .animate-tablet {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .animate-desktop {
+    @apply transition-all duration-500 ease-in-out;
+  }
+
+  /* Hide/show utilities for different screen sizes */
+  .hide-mobile {
+    @apply hidden sm:block;
+  }
+
+  .show-mobile {
+    @apply block sm:hidden;
+  }
+
+  .hide-tablet {
+    @apply hidden md:block;
+  }
+
+  .show-tablet {
+    @apply block md:hidden;
+  }
+
+  .hide-desktop {
+    @apply hidden lg:block;
+  }
+
+  .show-desktop {
+    @apply block lg:hidden;
   }
 }

@@ -99,19 +99,19 @@ const Hero = ({ about }: HeroProps) => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center"
+      className="min-h-screen flex items-center justify-center py-8 sm:py-12 md:py-16 lg:py-20"
     >
       <div className="container-custom">
-        <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-start gap-8 lg:gap-12">
-          {/* Profile Picture - Left Side */}
+        <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-start gap-6 sm:gap-8 lg:gap-12 xl:gap-16">
+          {/* Profile Picture - Enhanced responsive design */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-            className="flex-shrink-0 flex flex-col items-center lg:items-start mt-8 sm:mt-0"
+            className="flex-shrink-0 flex flex-col items-center lg:items-start mt-4 sm:mt-8 lg:mt-0 order-2 lg:order-1"
           >
-            <div className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border-4 border-primary-200 dark:border-primary-800 shadow-2xl">
+            <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 rounded-full overflow-hidden border-4 border-primary-200 dark:border-primary-800 shadow-2xl">
               <img
                 src={about?.avatar || "/profile.png"}
                 alt={about?.name || "Farman Ullah"}
@@ -119,13 +119,13 @@ const Hero = ({ about }: HeroProps) => {
               />
             </div>
 
-            {/* Social Media Links */}
+            {/* Social Media Links - Enhanced responsive design */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
-              className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-4 sm:mt-6 w-full"
+              className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mt-4 sm:mt-6 w-full"
             >
               {socialLinks.map((social, index) => {
                 const IconComponent = social.icon;
@@ -141,11 +141,11 @@ const Hero = ({ about }: HeroProps) => {
                     transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`group flex flex-col items-center space-y-2`}
+                    className={`group flex flex-col items-center space-y-1 sm:space-y-2 touch-friendly`}
                     title={social.name}
                   >
                     <motion.div
-                      className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white dark:bg-dark-800 border-2 border-gray-200 dark:border-dark-600 shadow-lg flex items-center justify-center transition-all duration-300 ${social.color} ${social.bgColor} hover:shadow-xl`}
+                      className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white dark:bg-dark-800 border-2 border-gray-200 dark:border-dark-600 shadow-lg flex items-center justify-center transition-all duration-300 ${social.color} ${social.bgColor} hover:shadow-xl touch-friendly`}
                       initial={{ y: 0 }}
                       whileInView={{ y: 0 }}
                       viewport={{ once: false, amount: 0.3 }}
@@ -157,9 +157,9 @@ const Hero = ({ about }: HeroProps) => {
                         delay: index * 0.15,
                       }}
                     >
-                      <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
+                      <IconComponent className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
                     </motion.div>
-                    <span className="text-xs font-medium text-gray-600 dark:text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       {social.name}
                     </span>
                   </motion.a>
@@ -168,21 +168,21 @@ const Hero = ({ about }: HeroProps) => {
             </motion.div>
           </motion.div>
 
-          {/* Content - Right Side */}
+          {/* Content - Enhanced responsive design */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-            className="flex-1 text-center lg:text-left"
+            className="flex-1 text-center lg:text-left order-1 lg:order-2"
           >
-            {/* Greeting */}
+            {/* Greeting - Enhanced responsive text */}
             <motion.h2
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
-              className="text-xl text-gray-600 dark:text-gray-300 mb-4 flex items-center justify-center lg:justify-start space-x-3"
+              className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 flex items-center justify-center lg:justify-start space-x-2 sm:space-x-3"
             >
               <motion.div
                 initial={{ scale: 0, rotate: -90 }}
@@ -190,7 +190,7 @@ const Hero = ({ about }: HeroProps) => {
                 viewport={{ once: false, amount: 0.3 }}
                 transition={{ duration: 0.4, delay: 0.2, ease: "backOut" }}
                 whileHover={{ scale: 1.1, rotate: 360 }}
-                className="text-2xl cursor-pointer"
+                className="text-xl sm:text-2xl cursor-pointer"
               >
                 🤝
               </motion.div>
@@ -204,21 +204,21 @@ const Hero = ({ about }: HeroProps) => {
                 viewport={{ once: false, amount: 0.3 }}
                 transition={{ duration: 0.4, delay: 0.5, ease: "backOut" }}
                 whileHover={{ scale: 1.1, rotate: 360 }}
-                className="text-2xl cursor-pointer"
+                className="text-xl sm:text-2xl cursor-pointer"
               >
                 💻
               </motion.div>
             </motion.h2>
 
-            {/* Main Title */}
+            {/* Main Title - Enhanced responsive text sizing */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-              className="mb-4"
+              className="mb-3 sm:mb-4 md:mb-6"
             >
-              <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 dark:text-white">
+              <motion.h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-gray-900 dark:text-white leading-tight">
                 <AnimatedText
                   text="MERN Stack Developer"
                   delay={0.6}
@@ -233,44 +233,44 @@ const Hero = ({ about }: HeroProps) => {
               </motion.h1>
             </motion.div>
 
-            {/* Description */}
+            {/* Description - Enhanced responsive text */}
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
-              className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl lg:max-w-none leading-relaxed"
+              className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-400 mb-6 sm:mb-8 max-w-2xl lg:max-w-none leading-relaxed mx-auto lg:mx-0"
             >
               {about?.bio ||
                 "Passionate MERN Stack Developer with expertise in MongoDB, Express.js, React.js, and Node.js, along with Next.js and MySQL. Specializing in building scalable RESTful APIs and secure authentication systems."}
             </motion.p>
 
-            {/* Call to Action Buttons */}
+            {/* Call to Action Buttons - Enhanced responsive design */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-4"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center mb-4"
             >
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection("#contact")}
-                className="btn-primary flex items-center space-x-2"
+                className="btn-primary flex items-center space-x-2 w-full sm:w-auto justify-center touch-friendly focus-visible"
               >
-                <span>contact me</span>
-                <ArrowRight className="w-5 h-5" />
+                <span className="text-sm sm:text-base">contact me</span>
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.button>
 
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => window.open("/Farman Ullah.pdf", "_blank")}
-                className="btn-secondary flex items-center space-x-2"
+                className="btn-secondary flex items-center space-x-2 w-full sm:w-auto justify-center touch-friendly focus-visible"
               >
-                <span>my resume</span>
-                <Download className="w-5 h-5" />
+                <span className="text-sm sm:text-base">my resume</span>
+                <Download className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.button>
             </motion.div>
           </motion.div>

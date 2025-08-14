@@ -9,16 +9,28 @@ const UpArrow = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      // Show up arrow when scrolled down more than 300px
-      if (window.scrollY > 300) {
+      // Show up arrow when scrolled down more than 200px (reduced for better mobile experience)
+      const scrollThreshold = window.innerWidth < 768 ? 200 : 300;
+      if (window.scrollY > scrollThreshold) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
       }
     };
 
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
+    // Initial check
+    toggleVisibility();
+
+    // Add event listener with passive option for better performance
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
+
+    // Also listen for resize events to update threshold
+    window.addEventListener("resize", toggleVisibility, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+      window.removeEventListener("resize", toggleVisibility);
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -38,9 +50,10 @@ const UpArrow = () => {
           transition={{ duration: 0.3, ease: "easeInOut" }}
           onClick={scrollToTop}
           onTouchEnd={scrollToTop}
-          className="up-arrow"
+          className="up-arrow-responsive"
+          aria-label="Scroll to top"
         >
-          <ChevronUp className="w-6 h-6 text-white" />
+          <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
         </motion.button>
       )}
     </AnimatePresence>
