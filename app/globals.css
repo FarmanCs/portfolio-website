@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-gray-900 dark:bg-dark-900 dark:text-white;
+    animation: fadeIn 500ms ease-out;
+  }
+
+  /* Prevent word breaking throughout the website */
+  * {
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+
+  /* Ensure navigation and important text doesn't break */
+  nav,
+  button,
+  a,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+
+  /* Header specific responsive improvements */
+  .header-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Contact section responsive improvements */
+  .contact-section {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Responsive adjustments for contact section */
+  @media (max-width: 768px) {
+    .contact-section {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .contact-section {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+  }
+
+  /* UpArrow component improvements */
+  .up-arrow {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border: none;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+
+  .up-arrow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  }
+
+  .up-arrow:active {
+    transform: translateY(0);
+  }
+
+  /* Optimize animations for better performance */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Ensure smooth animations on mobile */
+  @media (max-width: 768px) {
+    * {
+      -webkit-transform: translateZ(0);
+      -moz-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      -o-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-full sm:max-w-4xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-8 sm:py-12 md:py-16 lg:py-20;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 text-sm sm:text-base;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-gray-300 hover:border-primary-600 text-gray-700 hover:text-primary-600 font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-all duration-200 text-sm sm:text-base;
+  }
+
+  /* Contact form responsive improvements */
+  @media (max-width: 1024px) {
+    .contact-form-container {
+      @apply px-4;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-form-container {
+      @apply px-3;
+    }
+
+    /* Ensure form inputs are properly sized for touch devices */
+    input,
+    textarea {
+      @apply min-h-[44px];
+    }
+
+    /* Better spacing for mobile */
+    .contact-form-spacing {
+      @apply space-y-3;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .contact-form-container {
+      @apply px-2;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
