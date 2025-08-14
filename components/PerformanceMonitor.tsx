@@ -4,25 +4,35 @@ import { useEffect } from "react";
 
 export default function PerformanceMonitor() {
   useEffect(() => {
-    // Monitor page load performance
-    if (typeof window !== "undefined") {
-      window.addEventListener("load", () => {
-        const navigation = performance.getEntriesByType(
-          "navigation"
-        )[0] as PerformanceNavigationTiming;
-        const loadTime = navigation.loadEventEnd - navigation.loadEventStart;
-        const domContentLoaded =
-          navigation.domContentLoadedEventEnd -
-          navigation.domContentLoadedEventStart;
+    // Only run in browser environment
+    if (typeof window !== "undefined" && typeof performance !== "undefined") {
+      const handleLoad = () => {
+        try {
+          const navigation = performance.getEntriesByType(
+            "navigation"
+          )[0] as PerformanceNavigationTiming;
+          if (navigation) {
+            const loadTime =
+              navigation.loadEventEnd - navigation.loadEventStart;
+            const domContentLoaded =
+              navigation.domContentLoadedEventEnd -
+              navigation.domContentLoadedEventStart;
 
-        console.log("Page Load Performance:", {
-          totalLoadTime: `${loadTime}ms`,
-          domContentLoaded: `${domContentLoaded}ms`,
-          firstContentfulPaint:
-            performance.getEntriesByName("first-contentful-paint")[0]
-              ?.startTime || "N/A",
-        });
-      });
+            console.log("Page Load Performance:", {
+              totalLoadTime: `${loadTime}ms`,
+              domContentLoaded: `${domContentLoaded}ms`,
+            });
+          }
+        } catch (error) {
+          console.log("Performance monitoring error:", error);
+        }
+      };
+
+      window.addEventListener("load", handleLoad);
+
+      return () => {
+        window.removeEventListener("load", handleLoad);
+      };
     }
   }, []);
 

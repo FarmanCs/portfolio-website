@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import PerformanceMonitor from "@/components/PerformanceMonitor";
+// import PerformanceMonitor from "@/components/PerformanceMonitor";
 
 export const metadata: Metadata = {
   title: "FU | Farman Ullah - MERN Stack Developer",
@@ -79,7 +79,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/favicon.svg" />
       </head>
       <body className="font-sans antialiased bg-white dark:bg-dark-900 text-gray-900 dark:text-white transition-colors duration-200 overflow-x-hidden">
-        <PerformanceMonitor />
+        {/* <PerformanceMonitor /> */}
         {children}
       </body>
     </html>

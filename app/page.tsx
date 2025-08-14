@@ -9,7 +9,6 @@ import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import UpArrow from "@/components/UpArrow";
 import Footer from "@/components/Footer";
-import dynamic from "next/dynamic";
 
 // Import static data directly
 import {
@@ -18,25 +17,6 @@ import {
   fallbackProjects,
   fallbackExperience,
 } from "@/lib/db";
-
-// Dynamically import heavy components
-const DynamicProjects = dynamic(() => import("@/components/Projects"), {
-  loading: () => (
-    <div className="min-h-[400px] flex items-center justify-center">
-      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-    </div>
-  ),
-  ssr: true,
-});
-
-const DynamicExperience = dynamic(() => import("@/components/Experience"), {
-  loading: () => (
-    <div className="min-h-[400px] flex items-center justify-center">
-      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-    </div>
-  ),
-  ssr: true,
-});
 
 export default async function Home() {
   // Use static data for immediate loading
@@ -59,9 +39,9 @@ export default async function Home() {
       <Hero about={about} />
       <Skills skills={skills} />
       <Services skills={skills} />
-      <DynamicProjects projects={projects} />
+      <Projects projects={projects} />
       <About about={about} />
-      <DynamicExperience experience={experience} />
+      <Experience experience={experience} />
       <Contact about={about} />
       <Footer />
       <UpArrow />
